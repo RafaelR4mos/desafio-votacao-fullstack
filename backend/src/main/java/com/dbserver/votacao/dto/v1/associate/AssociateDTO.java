@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +13,7 @@ import java.util.UUID;
 @Setter
 public class AssociateDTO {
 
-    private UUID idAssociate;
+    private String idAssociate;
     private String firstName;
     private String lastName;
     private String cpf;

@@ -9,7 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
-import java.util.UUID;
 
 @Table(name = "associate")
 @Entity
@@ -22,7 +21,7 @@ public class Associate {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_associate")
-    private UUID idAssociate;
+    private String idAssociate;
 
     @Column(name = "first_name")
     private String firstName;
