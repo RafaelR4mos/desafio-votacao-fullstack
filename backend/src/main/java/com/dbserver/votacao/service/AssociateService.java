@@ -3,6 +3,7 @@ package com.dbserver.votacao.service;
 import com.dbserver.votacao.entity.Associate;
 import com.dbserver.votacao.dto.v1.associate.AssociateCreateDTO;
 import com.dbserver.votacao.dto.v1.associate.AssociateDTO;
+import com.dbserver.votacao.exception.BusinessRuleException;
 import com.dbserver.votacao.repository.AssociateRepository;
 import com.dbserver.votacao.util.DateConverter;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,10 @@ public class AssociateService {
         associateDTO.setUpdatedAt(DateConverter.convertTimestampToLocalDateTime(entitySaved.getUpdatedAt()));
 
         return associateDTO;
+    }
+
+    public Associate getAssociate(String idAssociate) {
+        return associateRepository.findById(idAssociate)
+                .orElseThrow(() -> new BusinessRuleException("Não foi encontrado nenhum associado com este id " + idAssociate ));
     }
 }
