@@ -1,8 +1,8 @@
 package com.dbserver.votacao.service;
 
 import com.dbserver.votacao.entity.Associate;
-import com.dbserver.votacao.entity.AssociateCreateDTO;
-import com.dbserver.votacao.entity.AssociateDTO;
+import com.dbserver.votacao.dto.v1.associate.AssociateCreateDTO;
+import com.dbserver.votacao.dto.v1.associate.AssociateDTO;
 import com.dbserver.votacao.repository.AssociateRepository;
 import com.dbserver.votacao.util.DateConverter;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.dbserver.votacao.entity;
+package com.dbserver.votacao.dto.v1.associate;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

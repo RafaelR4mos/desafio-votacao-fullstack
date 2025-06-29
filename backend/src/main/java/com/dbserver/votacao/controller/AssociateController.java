@@ -1,7 +1,7 @@
 package com.dbserver.votacao.controller;
 
-import com.dbserver.votacao.entity.AssociateCreateDTO;
-import com.dbserver.votacao.entity.AssociateDTO;
+import com.dbserver.votacao.dto.v1.associate.AssociateCreateDTO;
+import com.dbserver.votacao.dto.v1.associate.AssociateDTO;
 import com.dbserver.votacao.service.AssociateService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
