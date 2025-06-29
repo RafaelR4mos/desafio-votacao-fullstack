@@ -1,0 +1,2 @@
+--liquibase formatted sql
+--changeset rafael.ramos:1 dbms:postgresql
