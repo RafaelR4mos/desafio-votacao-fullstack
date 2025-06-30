@@ -79,6 +79,11 @@ public class AgendaService {
         return agendaRepository.count();
     }
 
+    public Agenda getAgenda(Integer idAgenda) {
+        return agendaRepository.findById(idAgenda)
+                .orElseThrow(() -> new BusinessRuleException("Pauta de id" + idAgenda + " não encontrada"));
+    }
+
     private String generateSlug(String title) {
         return title.toLowerCase().replaceAll("\\s+", "-");
     }
