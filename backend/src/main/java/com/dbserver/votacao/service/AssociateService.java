@@ -1,5 +1,6 @@
 package com.dbserver.votacao.service;
 
+import com.dbserver.votacao.dto.v1.associate.AssociateStatsDTO;
 import com.dbserver.votacao.entity.Associate;
 import com.dbserver.votacao.dto.v1.associate.AssociateCreateDTO;
 import com.dbserver.votacao.dto.v1.associate.AssociateDTO;
@@ -20,6 +21,7 @@ public class AssociateService {
     public AssociateDTO create(AssociateCreateDTO associateCreateDTO) {
         Associate entity = mapper.map(associateCreateDTO, Associate.class);
 
+        entity.setCpf(associateCreateDTO.getCpf().replaceAll("\\D", "")); // Remove unecessary caracters
         Associate entitySaved = associateRepository.save(entity);
 
         AssociateDTO associateDTO = mapper.map(entitySaved, AssociateDTO.class);
@@ -29,6 +31,17 @@ public class AssociateService {
         associateDTO.setUpdatedAt(DateConverter.convertTimestampToLocalDateTime(entitySaved.getUpdatedAt()));
 
         return associateDTO;
+    }
+
+    public AssociateDTO findByCpf(String cpf) {
+        Associate associate = associateRepository.findByCpf(cpf)
+                .orElseThrow(() -> new BusinessRuleException("Nenhum associado encontrado com este cpf"));
+
+        return mapper.map(associate, AssociateDTO.class);
+    }
+
+    public AssociateStatsDTO countAllActiveAssociates() {
+        return new AssociateStatsDTO(associateRepository.countAllByActive(true));
     }
 
     public Associate getAssociate(String idAssociate) {
