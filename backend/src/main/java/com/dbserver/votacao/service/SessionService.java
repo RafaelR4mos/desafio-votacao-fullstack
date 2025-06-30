@@ -21,9 +21,10 @@ public class SessionService {
     private final SessionRepository sessionRepository;
     private final ModelMapper mapper;
 
-    public Session createSessionIntoAgenda(Agenda agenda) {
+    public Session createSessionIntoAgenda(Agenda agenda, Integer durationInSeconds) {
         Session entity = new Session();
         entity.setStatus(SessionStatus.DRAFT);
+        entity.setDurationInSeconds(durationInSeconds);
         entity.setAgenda(agenda);
         return entity;
     }
@@ -48,6 +49,10 @@ public class SessionService {
         sessionDTO.setCreatedAt(DateConverter.convertTimestampToLocalDateTime(entitySaved.getCreatedAt()));
 
         return sessionDTO;
+    }
+
+    public long countAllActiveSessions() {
+        return sessionRepository.countAllByStatus(SessionStatus.VOTING);
     }
 
     public Session getSession(String idSession) {

@@ -12,4 +12,5 @@ import java.util.List;
 public interface SessionRepository extends JpaRepository<Session, String> {
 
     List<Session> findByStatusAndFinishedAtBefore(SessionStatus status, LocalDateTime finishedAt);
+    long countAllByStatus(SessionStatus sessionStatus);
 }
