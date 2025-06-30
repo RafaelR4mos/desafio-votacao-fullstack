@@ -2,6 +2,13 @@
 
 por: `Rafael Ramos dos Santos` 💙
 
+Índice:
+
+- [✅ 1. Visão Geral do projeto](#-1-visão-geral-do-projeto)
+- [⚒️ 2. Tecnologias Utilizadas](#-2-tecnologias-utilizadas)
+- [✏️ 3. Como utilizar o Projeto](#-3-como-utilizar-o-projeto)
+- [💡 4. Pontos fortes da entrega (na minha opinião)](#-4-pontos-fortes-da-entrega-na-minha-opinião)
+
 ## ✅ 1. Visão Geral do projeto
 
 Com base nos requisitos exigidos como:
@@ -14,19 +21,24 @@ Com base nos requisitos exigidos como:
 
 Foi desenvolvido o `frontend` e `backend` de um sistema de votação de cooperativa.
 
+> ⚠️ **Aviso Importante**  
+> Esta API está hospedada no [Render](https://render.com), uma plataforma que coloca o servidor em modo de hibernação após um período de inatividade.  
+> Por isso, **as primeiras requisições após algum tempo de ociosidade podem ser mais lentas**, enquanto o servidor "acorda".  
+> Após isso, o desempenho volta ao normal. Agradeço pela sua compreensão.
+
 ### 🎨 Resultado - Frontend (prévia)
 
 ![visao geral front](./assets/visao-geral-front.png)
 
-➡️ Disponível em: [link](#)
+➡️ Disponível em: [Frontend - Tela inicial app](https://rafael-desafio-votacao-fullstack-fr.vercel.app/)
 
 ### ⚙️ Resultado - Backend (prévia)
 
-![visao geral bacl](./assets/visao-geral-back.png)
+![visao geral back](./assets/visao-geral-back.png)
 
-➡️ Disponível em: [link](#)
+➡️ Disponível em: [Backend API - Swagger](https://rafael-desafio-votacao-fullstack-backend.onrender.com/api/votacao/v1/swagger-ui/index.html)
 
-## 2. ⚒️ Tecnologias Utilizadas
+## ⚒️ 2. Tecnologias Utilizadas
 
 ### Frontend
 
@@ -65,7 +77,7 @@ Foi desenvolvido o `frontend` e `backend` de um sistema de votação de cooperat
 
 - **Documentação** `Open API Swagger`: O Swagger é excelente para usar como documentação da API, tem diversas annotations para documentar melhor os endpoints (para além da documentação gerada automaticamente).
 
-## 3. ✏️ Como utilizar o Projeto
+## ✏️ 3. Como utilizar o Projeto
 
 ### Backend
 
