@@ -32,7 +32,7 @@ import { toast } from "sonner";
 import type { GenerericErrorResponse } from "@/model/Error";
 import type { AxiosError } from "axios";
 
-export const agendaCreateSchema = z.object({
+const agendaCreateSchema = z.object({
   title: z
     .string({
       required_error: "O título da pauta é obrigatório",
