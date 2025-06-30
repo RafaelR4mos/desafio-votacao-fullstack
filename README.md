@@ -1,86 +1,153 @@
-# Votação
+# 🚀 Desafio Fullstack (Java/React)
 
-## Objetivo
+por: `Rafael Ramos dos Santos` 💙
 
-No cooperativismo, cada associado possui um voto e as decisões são tomadas em assembleias, por votação. Imagine que você deve criar uma solução we para gerenciar e participar dessas sessões de votação.
-Essa solução deve ser executada na nuvem e promover as seguintes funcionalidades através de uma API REST / Front:
+## ✅ 1. Visão Geral do projeto
 
-- Cadastrar uma nova pauta
-- Abrir uma sessão de votação em uma pauta (a sessão de votação deve ficar aberta por
-  um tempo determinado na chamada de abertura ou 1 minuto por default)
-- Receber votos dos associados em pautas (os votos são apenas 'Sim'/'Não'. Cada associado
-  é identificado por um id único e pode votar apenas uma vez por pauta)
-- Contabilizar os votos e dar o resultado da votação na pauta
+Com base nos requisitos exigidos como:
 
-Para fins de exercício, a segurança das interfaces pode ser abstraída e qualquer chamada para as interfaces pode ser considerada como autorizada. A solução deve ser construída em java com Spring-boot e Angular/React conforme orientação, mas os frameworks e bibliotecas são de livre escolha (desde que não infrinja direitos de uso).
+- Criação de pautas
+- Votar em uma pauta SIM/NAO
+- Exibir resultados de uma pauta
+- Não permitir que cooperados votem mais de uma vez em uma pauta
+- Dentro outros...
 
-É importante que as pautas e os votos sejam persistidos e que não sejam perdidos com o restart da aplicação.
+Foi desenvolvido o `frontend` e `backend` de um sistema de votação de cooperativa.
 
-## Como proceder
+### 🎨 Resultado - Frontend (prévia)
 
-Por favor, realize o FORK desse repositório e implemente sua solução no FORK em seu repositório GItHub, ao final, notifique da conclusão para que possamos analisar o código implementado.
+![visao geral front](./assets/visao-geral-front.png)
 
-Lembre de deixar todas as orientações necessárias para executar o seu código.
+➡️ Disponível em: [link](#)
 
-### Tarefas bônus
+### ⚙️ Resultado - Backend (prévia)
 
-- Tarefa Bônus 1 - Integração com sistemas externos
-  - Criar uma Facade/Client Fake que retorna aleátoriamente se um CPF recebido é válido ou não.
-  - Caso o CPF seja inválido, a API retornará o HTTP Status 404 (Not found). Você pode usar geradores de CPF para gerar CPFs válidos
-  - Caso o CPF seja válido, a API retornará se o usuário pode (ABLE_TO_VOTE) ou não pode (UNABLE_TO_VOTE) executar a operação. Essa operação retorna resultados aleatórios, portanto um mesmo CPF pode funcionar em um teste e não funcionar no outro.
+![visao geral bacl](./assets/visao-geral-back.png)
 
+➡️ Disponível em: [link](#)
+
+## 2. ⚒️ Tecnologias Utilizadas
+
+### Frontend
+
+![Tela de votação](./assets/tela-votacao.png)
+
+<p align="center">Prévia - Tela de votação</p>
+
+- **Framework lib principal:** `React` + `Nextjs` + `Typescript`: Uma stack muito boa de se utilizar com ótima DX (developer experience), a componentização torna o processo muito mais ágil, deixou o projeto mais escalável com as tipagens do typescript, além de tornar o processo de manipulação do DOM para adicionar "reatividade" muito mais facilitado.
+
+- **Recursos de estilização principais** `Tailwindcss` + `ShadcnUI`: O Tailwind facilita muito na estilização com as suas diversas classes utilitárias, além de não precisar ficar criando diversos arquivos de estilização. Já o Shadcn traz componentes prontos e já validados através do RadixUi com uma estilização bem refinada e fácil de customizar por ter acesso ao código-fonte do componente.
+
+- **Formulários e Validação** `React Hook Form` + `Zod`: O React Hook form facilita muito todo o processo de capturar dados de elementos HTML, gerenciar estados de formulário, disparar eventos de submit, lidar com Controlled e Uncontrolled inputs e por aí vai. Já o Zod possibilita criar schemas de validação com mensagens customizada de forma bem ágil, além de ter integração com o React Hook Form.
+
+- **Client http, API e Caching** `Tanstack-query (react-query)` + `Axios`: O Tanstack query facilita muito lidar com requisições HTTP com Queries e Mutations. Ele traz diversas funcionalidades como: Controle do estado da requisição, caching, reFetching, revalidar cache lidar com sucesso e erro da requisição, dentre outros. Já o Axios traz uma interface bem fácil e intuitiva de utilizar e configurar para montar requisições HTTP.
+
+- **Formatação de Código** `Prettier` + `Eslint` + `plugin-tailwind`: O prettier já é muito utilizado na comunidade pela sua excelente formatação, sempre utilizo nos meus projetos. O Eslint já vem por padrão no projeto Next e sempre tenho o costume de rodar o `npm run lint` para verificar o código antes de subir para o Github. Quando utilizo tailwind, gosto de usar um plugin que organização a posição das classes, deixando mais organizado e legível.
+
+- **Outros recursos de estilização e Experiência do usuário**:
+
+  - `Sonner:` Toast com um design minimalista para exibir feedbacks de estados para o usuário.
+  - `@react-input/mask:` Utilizei para aplicar uma máscara no campo de `cpf` facilitou bastante a integração com a estiliação do Shadcn.
+
+- **Fonte de inspiração da interface** `V0.dev`: Compilei tudo que eu precisava fazer no projeto e busquei inspiração na IA da V0.dev da Vercel. Com isso, tive muitos insights de como eu poderia montar a interface e isso já me ajudou a pensar inclusive em algumas regras de negócio.
+
+### Backend
+
+![Diagrama do banco](./assets/diagrama-banco.png)
+
+<p align="center">Diagrama ER - Banco de dados. Extraído via Dbeaver</p>
+
+> As colunas `databasechangelog` e `databasechangeloglock` são geradas automaticamente pelo Liquibase para versionamento do banco.
+
+- **Stack Principal:** `Java` `Spring Boot - 3.2.1`: O Spring traz com ele um ecossistema muito bom de ferramenta para usar desde a parte WEB até o Spring Data, Security e outras... É excelente e tem padrões de projeto muito bem definidos pela comunidade.
+
+- **Banco de Dados e Migrations:** `PostgreSQL` e `Liquibase`: É um DBMS que já tenho familiaridade com algumas particularidades de escrita de SQL e do próprio banco. É fácil de encontrar recursos para publicar em produção. Tenho familiaridade com o Liquibase e acho bem tranquilo e organizado para criar as migrations que serão persistidas e monitoradas no banco.
+
+- **Documentação** `Open API Swagger`: O Swagger é excelente para usar como documentação da API, tem diversas annotations para documentar melhor os endpoints (para além da documentação gerada automaticamente).
+
+## 3. ✏️ Como utilizar o Projeto
+
+### Backend
+
+Requisitos necessários:
+
+- Ter o Java versão mínima `>=17`
+- Maven 3.6.3+
+- Imagem PostgreSQL (Caso rodar banco local)
+
+Passo-apasso para utilizar o projeto
+
+```bash
+# Clone o repositório
+git clone https://github.com/RafaelR4mos/desafio-votacao-fullstack.git
+
+# Entre na pasta frontend
+cd backend
+
+# Instale as dependências
+./mvnw clean install
+
+# Crie o arquivo .env e adicione a linha abaixo
+./mvnw spring-boot:run
+
+# Abra o navegador e acesse a documentação
+http://localhost:8080/api/votacao/v1/swagger-ui/index.html#
 ```
-// CPF Ok para votar
-{
-    "status": "ABLE_TO_VOTE
-}
-// CPF Nao Ok para votar - retornar 404 no client tb
-{
-    "status": "UNABLE_TO_VOTE
-}
+
+### Frontend
+
+Requisitos necessários:
+
+- Ter o Node versão mínima `>=18.17.0`
+
+Passo-apasso para utilizar o projeto
+
+```bash
+# Clone o repositório
+git clone https://github.com/RafaelR4mos/desafio-votacao-fullstack.git
+
+# Entre na pasta frontend
+cd frontend
+
+# Instale as dependências
+npm install
+
+# Crie o arquivo .env e adicione a linha abaixo
++ NEXT_PUBLIC_BACKEND_URL=url-remota
+OU
++ NEXT_PUBLIC_BACKEND_URL=http://localhost:8080/api/votacao/v1 #API local
+
+# Rode o projeto
+npm run dev
+
+# Abra o navegador e acesse
+http://localhost:3000
 ```
 
-Exemplos de retorno do serviço
+## 💡 4. Pontos fortes da entrega (na minha opinião)
 
-### Tarefa Bônus 2 - Performance
+1. Tratamento de exceções:
+   ![Tratamento de exceção associado](./assets/excecao-nao-encontrou-associado.png)
 
-- Imagine que sua aplicação possa ser usada em cenários que existam centenas de
-  milhares de votos. Ela deve se comportar de maneira performática nesses
-  cenários
-- Testes de performance são uma boa maneira de garantir e observar como sua
-  aplicação se comporta
+   ![ exceção voto](./assets//excecao-voto.png)
 
-### Tarefa Bônus 3 - Versionamento da API
+   ![alt text](./assets/field-errors.png)
 
-○ Como você versionaria a API da sua aplicação? Que estratégia usar?
+2. Responsividade:
 
-## O que será analisado
+   ![alt text](./assets/tela-inicial-mobile.png)
+   ![alt text](./assets/tela-inicial-mobile2.png)
+   ![alt text](./assets/modal-mobile.png)
 
-- Simplicidade no design da solução (evitar over engineering)
-- Organização do código
-- Arquitetura do projeto
-- Boas práticas de programação (manutenibilidade, legibilidade etc)
-- Possíveis bugs
-- Tratamento de erros e exceções
-- Explicação breve do porquê das escolhas tomadas durante o desenvolvimento da solução
-- Uso de testes automatizados e ferramentas de qualidade
-- Limpeza do código
-- Documentação do código e da API
-- Logs da aplicação
-- Mensagens e organização dos commits
-- Testes
-- Layout responsivo
+3. Feedbacks visuais:
 
-## Dicas
+![alt text](./assets/cpf-nao-encontrado.png)
+![alt text](./assets/voto-ja-registrado.png)
+![alt text](./assets/voto.png)
+![alt text](./assets/toast.png)
 
-- Teste bem sua solução, evite bugs
+Estes são alguns dos pontos em que eu acredito que fiz um bom trabalho. Tem muita margem para melhoria ainda, e eu adoraria receber feedbacks sobre. Espero que tenha gostado 😄
 
-  Observações importantes
-- Não inicie o teste sem sanar todas as dúvidas
-- Iremos executar a aplicação para testá-la, cuide com qualquer dependência externa e
-  deixe claro caso haja instruções especiais para execução do mesmo
-  Classificação da informação: Uso Interno
+---
 
-
-
-# desafio-votacao
+por [Rafael Ramos](https://www.linkedin.com/in/rafaelr4mos/) 💙
